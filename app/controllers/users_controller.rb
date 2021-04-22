@@ -13,11 +13,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # Success (valid params)
+      # GET "/users/#{user.id}"
+      log_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
-      # Failure (not valid params)
       render 'new'
     end
   end
